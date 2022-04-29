@@ -4,6 +4,8 @@
  */
 package Classes;
 
+import java.awt.Font;
+
 /**
  *
  * @author manue
@@ -15,6 +17,7 @@ public class TelaGenio extends javax.swing.JFrame {
      */
     public TelaGenio() {
         initComponents();
+        lblFrase.setText("<html>Vou pensar em um valor entre <strong>1 e 10</strong>. Tente adivinhar</html>");
     }
 
     /**
@@ -26,21 +29,62 @@ public class TelaGenio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        lblFrase = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtVal = new javax.swing.JSpinner();
+        btnPalpite = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 102, 102));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblFrase.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFrase.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFrase.setText("Frase");
+        lblFrase.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblFrase.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(lblFrase, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 210, 110));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Genio_medio_novo1.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Balão de texto_novo2.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 300, 240));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("Valor");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 60, 40));
+
+        txtVal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtVal.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        getContentPane().add(txtVal, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 80, 40));
+
+        btnPalpite.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnPalpite.setText("Palpite");
+        btnPalpite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPalpiteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPalpite, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPalpiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPalpiteActionPerformed
+        // TODO add your handling code here:
+        double n = 1 + Math.random() * (11 - 1);
+        int valor = (int)n;
+        int num = Integer.parseInt(txtVal.getValue().toString());
+        String f1 = "<html>Parabéns você ACERTOU!</html>";
+        String f2 = "<html>ERROU! Eu pensei no valor " + valor + "</html>";
+        String res = (valor == num)?f1:f2;
+        lblFrase.setFont(new Font("Arial Black", Font.PLAIN, 20));
+        lblFrase.setText(res);
+        
+    }//GEN-LAST:event_btnPalpiteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +122,11 @@ public class TelaGenio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPalpite;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblFrase;
+    private javax.swing.JSpinner txtVal;
     // End of variables declaration//GEN-END:variables
 }
